@@ -3,7 +3,10 @@ __author__ = 'chi-liangkuo'
 import pandas as pd
 from collections import Counter
 
-def featureReport(df):
+def featureReport():
+
+    df = pd.read_csv('./census-income.data',header=None)
+    df2 = pd.read_csv('./census-income.test',header =None)
 
     cols = ["age","class of worker","detailed industry recode","detailed occupation recode","education","wage per hour","enroll in edu inst last wk","marital stat",
             "major industry code","major occupation code","race","hispanic origin","sex","member of a labor union","reason for unemployment","full or part time employment stat",
@@ -15,14 +18,25 @@ def featureReport(df):
     count = 0
     print len(cols)
     df.columns = cols
+    df2.columns = cols
     nrow = df.values.shape[0]
     for i in df.columns:
 
-        print "=========== ",i,"   :",count," feature type: ",df[i].dtype.name,"==========="
+        print "=============",i,"   :",count," feature type: ",df[i].dtype.name,"=================="
         #if df[i].dtype.name == 'object':
+        print "key length: ",len(Counter(df[i].values).keys())
+
         for k,v in Counter(df[i].values).items():
-            if k is not "instance weight":
+            if i is not "instance weight":
                 print "%2.4f " % round(v/float(nrow)*100,4),"   ",k
+
+        print "************* test *************"
+        print "key length: ",len(Counter(df2[i].values).keys())
+        for k,v in Counter(df2[i].values).items():
+
+            if i is not "instance weight":
+                print "%2.4f " % round(v/float(nrow)*100,4),"   ",k
+
         #else:
         #    print df[i].describe()
         print "\n"
@@ -31,5 +45,5 @@ def featureReport(df):
 
 if __name__ == "__main__":
 
-    df = pd.read_csv('./census-income.data',header=None)
-    featureReport(df)
+
+    featureReport()
