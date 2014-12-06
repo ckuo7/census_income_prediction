@@ -14,8 +14,9 @@ import timeit
 
 
 
-if __name__ == "__main__":
 
+
+def knn_test():
 
     np.random.seed(10)
     start = timeit.default_timer()
@@ -52,7 +53,7 @@ if __name__ == "__main__":
     le2 = LabelEncoder()
     yt = le2.fit_transform(dft[41].values)
 
-    # new_train_index_t = dataBalance(yt,0.025)
+    # new_train_index_t = dataBalance(yt,0.001)
     # Xt = Xt[new_train_index_t,:]
     # yt = yt[new_train_index_t]
 
@@ -74,9 +75,9 @@ if __name__ == "__main__":
     knn2 = KNeighborsClassifier(n_neighbors=50,weights='distance')
     knn2.fit(X,y)
     print knn2
-    print "saving pickle..."
-    with open('./knn.pkl','wb') as pickle_knn:
-        cPickle.dump(knn2,pickle_knn)
+    # print "saving pickle..."
+    # with open('./knn.pkl','wb') as pickle_knn:
+    #     cPickle.dump(knn2,pickle_knn)
     print "predicting..."
     p2 = knn2.predict(Xt)
     m2 = confusion_matrix(yt,p2)
@@ -93,6 +94,10 @@ if __name__ == "__main__":
     stop = timeit.default_timer()
     print "run time: ",(stop-start)
 
+
+if __name__ == "__main__":
+
+    knn_test()
 
     ##############################################################
     #######   final test set result
