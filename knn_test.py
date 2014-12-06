@@ -4,11 +4,12 @@ __author__ = 'chi-liangkuo'
 from sklearn.preprocessing import LabelEncoder
 from dataProcess import dataProcess
 from dataBalance import dataBalance
+from dataBalance import dataUnbalance
 from sklearn.metrics import confusion_matrix
 from sklearn.neighbors import KNeighborsClassifier
 import pandas as pd
 import numpy as np
-import matplotlib.pyplot as plt
+import cPickle
 import timeit
 
 
@@ -23,9 +24,10 @@ if __name__ == "__main__":
     numList = [0,16,18,30,39]
 
     ##############################################################
-    #   Input the training set
-    #
-    #
+    ###### import the training set
+    ###### transform all the categorical variables with one hot
+    ###### transformation and standardize the numerical variable
+    ###### transform the target variable
     ##############################################################
 
     df = pd.read_csv('./census-income.data',header=None)
@@ -33,17 +35,16 @@ if __name__ == "__main__":
     le = LabelEncoder()
     y_ = le.fit_transform(df[41].values)
 
-    new_train_index = dataBalance(y_,0.05)
-
+    r = 5.5
+    new_train_index = dataUnbalance(y_,0.05,r)
     X = X_[new_train_index,:]
     y = y_[new_train_index]
 
     print "training set shape  ",X_.shape
 
     ##############################################################
-    #   Input the testing set
-    #
-    #
+    #######   Input the testing set
+    #######   transform the data in the sae way
     ##############################################################
 
     dft = pd.read_csv('./census-income.test',header=None)
@@ -51,42 +52,51 @@ if __name__ == "__main__":
     le2 = LabelEncoder()
     yt = le2.fit_transform(dft[41].values)
 
-    new_train_index_t = dataBalance(yt,0.025)
-    Xt = Xt[new_train_index_t,:]
-    yt = yt[new_train_index_t]
+    # new_train_index_t = dataBalance(yt,0.025)
+    # Xt = Xt[new_train_index_t,:]
+    # yt = yt[new_train_index_t]
 
 
-    print "testing set shape  ",Xt.shape
-    print "training knn with K=50 and uniform weight"
-    knn1 = KNeighborsClassifier(n_neighbors=50,weights='uniform')
-    knn1.fit(X,y)
-    print knn1
-    print "predicting..."
-    p1 = knn1.predict(Xt)
-    m1 = confusion_matrix(yt,p1)
-    print "confusion metrics:\n", m1
-    print "accuracy: ", round((m1[0,0]+m1[1,1])/float(Xt.shape[0]),4)
-    print "recall: ", round(m1[1,1]/float(np.sum(m1[1,:])),4)
-    print "precision: ", round(m1[1,1]/float(np.sum(m1[:,1])),4)
+    # print "testing set shape  ",Xt.shape
+    # print "training knn with K=50 and uniform weight"
+    # knn1 = KNeighborsClassifier(n_neighbors=50,weights='uniform')
+    # knn1.fit(X,y)
+    # print knn1
+    # print "predicting..."
+    # p1 = knn1.predict(Xt)
+    # m1 = confusion_matrix(yt,p1)
+    # print "confusion metrics:\n", m1
+    # print "accuracy: ", round((m1[0,0]+m1[1,1])/float(Xt.shape[0]),4)
+    # print "recall: ", round(m1[1,1]/float(np.sum(m1[1,:])),4)
+    # print "precision: ", round(m1[1,1]/float(np.sum(m1[:,1])),4)
 
     print "training svc with K=50 and distance weight"
     knn2 = KNeighborsClassifier(n_neighbors=50,weights='distance')
     knn2.fit(X,y)
     print knn2
+    print "saving pickle..."
+    with open('./knn.pkl','wb') as pickle_knn:
+        cPickle.dump(knn2,pickle_knn)
     print "predicting..."
     p2 = knn2.predict(Xt)
     m2 = confusion_matrix(yt,p2)
+    accuracy2 =  round((m2[0,0]+m2[1,1])/float(Xt.shape[0]),4)
+    recall2 =  round(m2[1,1]/float(np.sum(m2[1,:])),4)
+    precision2 =  round(m2[1,1]/float(np.sum(m2[:,1])),4)
+
     print "confusion metrics:\n", m2
-    print "accuracy: ", round((m2[0,0]+m2[1,1])/float(Xt.shape[0]),4)
-    print "recall: ", round(m2[1,1]/float(np.sum(m2[1,:])),4)
-    print "precision: ", round(m2[1,1]/float(np.sum(m2[:,1])),4)
+    print "accuracy: ",accuracy2
+    print "f1: ", round( 2*precision2*recall2/(precision2+recall2),4)
+
 
 
     stop = timeit.default_timer()
     print "run time: ",(stop-start)
 
 
-
+    ##############################################################
+    #######   final test set result
+    ##############################################################
     # testing all testset
 
     #new_train_index_t = dataBalance(yt,0.05)

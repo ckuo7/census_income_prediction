@@ -8,7 +8,7 @@ from sklearn.cross_validation import cross_val_score
 
 from collections import Counter
 from sklearn.preprocessing import LabelEncoder
-from bootstrap import dataBalanceBoot
+from dataBalance import dataBalance
 
 class chooseFeature(sklearn.base.BaseEstimator):
     """
@@ -118,8 +118,8 @@ class chooseFeature(sklearn.base.BaseEstimator):
             else:
                 continue
 
-        print "k: ",feature
-        self.feature = 3
+        print "choosefeature: ",feature
+        self.feature = feature
 
         # # Calculate Gini Indices with leave one out approach
         # impurity2 = {}
@@ -180,27 +180,24 @@ def eval():
     y = df[41].values
     le = LabelEncoder()
     newy = le.fit_transform(y)
-    new_index = dataBalanceBoot(newy)
+    new_index = dataBalance(newy,0.93)
 
     newdf = df.ix[new_index,:]
-
     clf = chooseFeature()
-    #clf.fit(newdf,newdf[41].values)
-
-    # a = cross_val_score(clf,newdf,newdf[41].values,cv=5,scoring="accuracy")
-    # print np.mean(a)
-    # 5 folds cross validation accuracy : 0.101563000962
 
     # b = cross_val_score(clf,newdf,newy[new_index],cv=5,scoring="precision")
     # print "precision", np.mean(b)
     # 5 folds cross validation precision : precision 0.102141840525
 
-    c = cross_val_score(clf,newdf,newy[new_index],cv=5,scoring="recall")
-    print "recall", np.mean(c)
-    # 5 folds cross validation recall : recall 0.0781212428865
+    a = cross_val_score(clf,newdf,newy[new_index],cv=5,scoring="accuracy")
+    print "accuracy: ", np.mean(a)
+
+    f = cross_val_score(clf,newdf,newy[new_index],cv=5,scoring="f1")
+    print "f1: ", np.mean(f)
 
 
-    #tdf = pd.read_csv('./census-income.test',header=None)
+
+
 
 
 if __name__ == '__main__':
