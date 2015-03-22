@@ -1,11 +1,11 @@
 __author__ = 'chi-liangkuo'
 
-
-
+import sys
+import os
+sys.path.insert(0, os.path.abspath('../'))
 
 from sklearn.preprocessing import LabelEncoder
 from munge.dataProcess import dataProcess
-from munge.dataBalance import dataBalance
 from munge.dataBalance import dataUnbalance
 from sklearn.metrics import confusion_matrix
 from sklearn.svm import SVC

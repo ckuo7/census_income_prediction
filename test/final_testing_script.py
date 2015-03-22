@@ -1,6 +1,8 @@
 __author__ = 'chi-liangkuo'
 
-
+import sys
+import os
+sys.path.insert(0, os.path.abspath('../'))
 
 import pickle
 import pandas as pd
@@ -62,9 +64,6 @@ def final_testing():
 
         cf = pickle.load(cf_pickle)
         print cf
-        #print .support_
-
-
         print "predicting..."
         p2 = cf.predict(Xt)
         m2 = confusion_matrix(yt,p2)
@@ -79,8 +78,6 @@ def final_testing():
     print "######################################################################"
     print "######## Testing the Logistic Regression"
     print "######################################################################"
-
-
 
     logistic_test()
 

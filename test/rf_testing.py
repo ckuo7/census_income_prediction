@@ -1,16 +1,18 @@
 __author__ = 'stevenchu'
+
+import sys
+import os
+sys.path.insert(0, os.path.abspath('../'))
+
 import pandas as pd
-import numpy as np
 from collections import Counter
 
 from sklearn.ensemble import RandomForestClassifier
-from sklearn import linear_model
 from sklearn.metrics import confusion_matrix
 
 from munge.dataProcessLabel import *
 from munge.dataBalanceRatio import *
 
-import pickle
 
 
 def rf_testing():

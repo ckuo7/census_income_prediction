@@ -1,16 +1,17 @@
 __author__ = 'stevenchu'
-import pandas as pd
-import numpy as np
-from collections import Counter
 
-from sklearn.ensemble import RandomForestClassifier
+import sys
+import os
+sys.path.insert(0, os.path.abspath('../'))
+
+import pandas as pd
+from collections import Counter
 from sklearn import linear_model
 from sklearn.metrics import confusion_matrix
-
 from munge.dataProcessOne import *
 from munge.dataBalanceRatio import *
 
-import pickle
+
 
 def logistic_test():
     np.random.seed(10)

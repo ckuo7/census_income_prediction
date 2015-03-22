@@ -1,5 +1,8 @@
 __author__ = 'chi-liangkuo'
 
+import sys
+import os
+sys.path.insert(0, os.path.abspath('../'))
 
 from sklearn.preprocessing import LabelEncoder
 from munge.dataBalance import dataBalance
@@ -8,25 +11,22 @@ from sklearn.metrics import confusion_matrix
 import pandas as pd
 import numpy as np
 import pickle
-import timeit
-
 
 
 if __name__ == "__main__":
 
+    ##############################################################
+    ### training the choosefeature classifier and make prediction
+    ##############################################################
 
-    df = pd.read_csv('./census-income.data',header=None)
+
+    df = pd.read_csv('../data/census-income.data',header=None)
     le = LabelEncoder()
     y = le.fit_transform(df[41].values)
     new_index = dataBalance(y,0.93)
 
-    ##############################################################
-    #   Input the testing set
-    #
-    #
-    ##############################################################
 
-    dft = pd.read_csv('./census-income.test',header=None)
+    dft = pd.read_csv('../data/census-income.test',header=None)
     Xt = dft.values
     le2 = LabelEncoder()
     yt = le2.fit_transform(dft[41].values)

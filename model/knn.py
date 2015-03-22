@@ -114,10 +114,11 @@ def knn_eval():
 if __name__ == "__main__":
 
     #################################################################
-    ### KNN model hyper parameter tunning with 1 % percent of
-    ### training set
-    ###
+    ### KNN model hyper parameter tunning with 10 % percent of
+    ### training set, K varies from 1,5,7,8,9,10,13,15,20,50,70
+    ### and Euclidean distance, Jaccard distance
     #################################################################
+
     start = timeit.default_timer()
     knn_eval()
     stop = timeit.default_timer()

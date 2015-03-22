@@ -1,7 +1,8 @@
 __author__ = 'chi-liangkuo'
 
-
-
+import sys
+import os
+sys.path.insert(0, os.path.abspath('../'))
 
 from sklearn.preprocessing import LabelEncoder
 from munge.dataProcess import dataProcess

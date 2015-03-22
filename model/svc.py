@@ -36,7 +36,6 @@ def svc_eval():
     new_train_index = dataBalance(y_,0.025)
 
 
-
     X = X_[new_train_index,:]
     y = y_[new_train_index]
 
@@ -95,6 +94,14 @@ def svc_eval():
 
 
 if __name__ == "__main__":
+
+
+    #################################################################
+    ### SVM model hyper parameter tunning with 5 % percent of
+    ### training set, gamma = [0,0.01,0.1,1], regularization
+    ### C = = [0.1,0.3,1,3,10,30]
+    #################################################################
+
 
     start = timeit.default_timer()
     svc_eval()

@@ -58,7 +58,7 @@ def dataUnbalance(y, percent, ratio):
 
     elif percent <= 0.93:
         pos_train_index = np.random.choice(positive_indexes,training_size,replace=True)
-        neg_train_index = np.random.choice(negative_indexes,floor(training_size*ratio),replace=True)
+        neg_train_index = np.random.choice(negative_indexes,floor(training_size*ratio),replace=False)
 
     else:
         pos_train_index = np.random.choice(positive_indexes,training_size,replace=True)

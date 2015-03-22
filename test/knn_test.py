@@ -1,15 +1,16 @@
 __author__ = 'chi-liangkuo'
 
+import sys
+import os
+sys.path.insert(0, os.path.abspath('../'))
 
 from sklearn.preprocessing import LabelEncoder
 from munge.dataProcess import dataProcess
-from munge.dataBalance import dataBalance
 from munge.dataBalance import dataUnbalance
 from sklearn.metrics import confusion_matrix
 from sklearn.neighbors import KNeighborsClassifier
 import pandas as pd
 import numpy as np
-import cPickle
 import timeit
 
 
@@ -31,7 +32,7 @@ def knn_test():
     ###### transform the target variable
     ##############################################################
 
-    df = pd.read_csv('./census-income.data',header=None)
+    df = pd.read_csv('../data/census-income.data',header=None)
     X_ = dataProcess(df,catList,numList)
     le = LabelEncoder()
     y_ = le.fit_transform(df[41].values)
@@ -48,7 +49,7 @@ def knn_test():
     #######   transform the data in the sae way
     ##############################################################
 
-    dft = pd.read_csv('./census-income.test',header=None)
+    dft = pd.read_csv('../data/census-income.test',header=None)
     Xt = dataProcess(dft,catList,numList)
     le2 = LabelEncoder()
     yt = le2.fit_transform(dft[41].values)
@@ -56,8 +57,6 @@ def knn_test():
     # new_train_index_t = dataBalance(yt,0.001)
     # Xt = Xt[new_train_index_t,:]
     # yt = yt[new_train_index_t]
-
-
     # print "testing set shape  ",Xt.shape
     # print "training knn with K=50 and uniform weight"
     # knn1 = KNeighborsClassifier(n_neighbors=50,weights='uniform')
