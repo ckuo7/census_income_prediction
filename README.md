@@ -65,17 +65,3 @@ BLAH BLAH BLAH
 # Summary
 
 We applied a number of various machine learning algorithms to this problem. Along the way, we tuned the hyper-parameters of our algorithms. While investigating not only these algorithms and their associated hyper-parameters, we dealt with missing as well as unbalanced data. Using F1 scores as our metric for success, we ultimately achieved the highest F1 score of 0.5911 with an SVM classifier with an RBF kernel.
-
-# Introduction
-
-# The Data
-
-# Data Cleaning
-
-# Model Selection
-
-# Final Results
-
-# Discussion
-
-# Conclusion
