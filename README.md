@@ -24,19 +24,21 @@ The first thing we did was investigate the general shape of our data. We plotted
 
 # Data Munging
 
-Because the dataset is unbalanced (more people earn less than $50,000 per year than more), we wanted a way of boostrapping our data to acheive 
+Our data munging process is divided into two tasks. The first is balancing our dataset according to specified ratios. The second is transforming our data to more manageable forms. The first two files cover the first task, while the remainder cover the latter one.
 
- 1. bootstrap.py
+Because the dataset is unbalanced (more people earn less than $50,000 per year than more), we wanted a way of boostrapping our data. Specifically, we wanted to try out two different scenarios: the first was when we bootstrapped to have an even number of positive and negative classes (even number of people making under and over $50,000 per year) and the second was when we had specified ratio of positive to negative classes.
+
+ 1. dataBalance.py has two functions: dataBalance and dataUnbalance. The first is a way of achieving an evenly balanced dataset of both positive and negative classes, while the second is used to achieve an unbalance dataset in a specified ratio (say, 30% of the negative class and 70% of the positive class). This particular file was used in the SVM, K-nn, as well as chooseFeature classifier.
  
- 2. dataBalance.py - 
+ 2. dataBalanceRatio.py has the same two functions as above. The only difference for us is that we used this particular file in the random forest as well as logistic classifiers.
+
+In order to run some of sklearn's algorithms on our data, it is important for the user to transform their categorical features into indicator variables. We used sklearn's OneHotEncoding method for this. Additionally, to increase performace time, we chose to normalize our numerical features. All three of the following files have functions to do this. If the user passes in their dataframe to one of these functions, then the output will be a new dataframe where all the categorical features are transformed into indicator variables while the numerical features are normalized. We employed different files for different algorithms listed below.
+
+ 3. dataProcess.py for the SVM, K-nn, and choosefeature classifiers.
  
- 3. dataBalanceRatio.py
+ 4. dataProcessLabel.py for the random forest classifier.
  
- 4. dataProcess.py
- 
- 5. dataProcessLabel.py
- 
- 6. dataProcessOne.py
+ 5. dataProcessOne.py for the logistic classifier.
 
 # Running the Models
 
