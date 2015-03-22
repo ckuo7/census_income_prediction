@@ -1,7 +1,6 @@
 __author__ = 'stevenchu'
+
 import numpy as np
-import pandas as pd
-from collections import Counter
 
 
 def dataBalanceBoot(y):

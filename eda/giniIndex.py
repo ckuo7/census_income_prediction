@@ -1,11 +1,11 @@
 __author__ = 'chi-liangkuo'
-
-
+import sys
+import os
+sys.path.insert(0, os.path.abspath('../'))
 from model.chooseFeature import chooseFeature
 from munge.bootstrap import dataBalanceBoot
 from sklearn.preprocessing import LabelEncoder
 from collections import Counter
-
 import pandas as pd
 
 cols = ["age","class of worker","detailed industry recode","detailed occupation recode","education","wage per hour","enroll in edu inst last wk","marital stat",
@@ -34,7 +34,7 @@ def giniIndex():
 
     count = 0
     for k,v in  Counter(impurity).items():
-        print k," & ",cols[count]," & ",round(v,4)," & "
+        print k," & ",cols[count]," & ",round(v,4)
         count +=1
 
 def giniIndex2():
@@ -59,4 +59,9 @@ def giniIndex2():
 
 
 if __name__ == "__main__":
+
+    ###################################################
+    ### Gini Impurity for first level
+    ###################################################
+
     giniIndex()

@@ -20,10 +20,15 @@ def featureReport():
     df.columns = cols
     df2.columns = cols
     nrow = df.values.shape[0]
+
+    #####################################################################
+    ### Univariate data analysis
+    ### histogram of each level of features
+    #####################################################################
+
     for i in df.columns:
 
         print "=============",i,"   :",count," feature type: ",df[i].dtype.name,"=================="
-        #if df[i].dtype.name == 'object':
         print "key length: ",len(Counter(df[i].values).keys())
 
         for k,v in Counter(df[i].values).items():
@@ -37,8 +42,7 @@ def featureReport():
             if i is not "instance weight":
                 print "%2.4f " % round(v/float(nrow)*100,4),"   ",k
 
-        #else:
-        #    print df[i].describe()
+
         print "\n"
         count += 1
 

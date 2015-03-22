@@ -120,24 +120,8 @@ class chooseFeature(sklearn.base.BaseEstimator):
             else:
                 continue
 
-        print "choosefeature: ",feature
+        #print "choosefeature: ",feature
         self.feature = feature
-
-        # # Calculate Gini Indices with leave one out approach
-        # impurity2 = {}
-        # categories = Counter(df[feature].values)
-        # for category in categories:
-        #
-        #     ind1 = [j for j, item in enumerate(df[k].values) if item == category]  # get the indices equal to category
-        #     ind2 = [j for j, item in enumerate(df[k].values) if item != category]  # get the indices not equal to category
-        #
-        #     labelOfList = []
-        #     labelOfList.append(labels[ind1])
-        #     labelOfList.append(labels[ind2])
-        #     impurity2[category] = self.weighted_impurity(labelOfList)
-        #
-        #
-        # return impurity2
 
 
         # calculate the mean of selected feature
@@ -182,14 +166,13 @@ def eval():
     y = df[41].values
     le = LabelEncoder()
     newy = le.fit_transform(y)
-    new_index = dataBalance(newy,0.93)
+
+    # change the 0.05 for number of percent of training examples used
+    new_index = dataBalance(newy,0.05)
 
     newdf = df.ix[new_index,:]
     clf = chooseFeature()
 
-    # b = cross_val_score(clf,newdf,newy[new_index],cv=5,scoring="precision")
-    # print "precision", np.mean(b)
-    # 5 folds cross validation precision : precision 0.102141840525
 
     a = cross_val_score(clf,newdf,newy[new_index],cv=5,scoring="accuracy")
     print "accuracy: ", np.mean(a)
@@ -203,5 +186,11 @@ def eval():
 
 
 if __name__ == '__main__':
+
+    ############################################################
+    ### 5 fold cross-validation of choose feature with 1 % of
+    ### all data. 0.05 % of positive and 0.05 % of negative
+    ############################################################
+
     eval()
 

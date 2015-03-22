@@ -9,17 +9,15 @@ from sklearn.preprocessing import StandardScaler
 
 def dataProcess(df, catList, numList):
 
-    # Function Input
     ##############################################################
-    #   df is a pandas DataFrame
-    #   catList is a list of column names of categorical variables
-    #   numList is a list of numerical variables
+    ### df is a pandas DataFrame
+    ### catList is a list of column names of categorical variables
+    ### numList is a list of numerical variables
     ##############################################################
 
-    # Functionality
     ##############################################################
-    #  Standardize the continuous variable
-    #  Transform the categorical variable into one-Hot representation
+    ### Standardize the continuous variable
+    ### Transform the categorical variable into one-Hot representation
     ##############################################################
 
     #  initialize n by 1 matrix, n is number of row of data frame
@@ -43,13 +41,21 @@ def dataProcess(df, catList, numList):
 
 def dataProcess2(df):
 
-    """input is a pandas data frame"""
-    #  standardize the continuous variable
-    #  transform the categorical variable into one-Hot representation
+    ### might need to uncomment the comment. not sure if the
+    ### function works
 
-    # initialize n by 1 matrix, n is number of row of data frame
+    ##############################################################
+    ### df is a pandas DataFrame
+    ### catList is a list of column names of categorical variables
+    ### numList is a list of numerical variables
+    ##############################################################
 
-    #x_ = np.zeros(df.shape[0])[:,]
+    ##############################################################
+    ### Standardize the continuous variable
+    ### Transform the categorical variable into one-Hot representation
+    ##############################################################
+
+
     df2 = pd.DataFrame()
     for i in df.columns:
 

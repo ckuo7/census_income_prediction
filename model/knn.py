@@ -3,8 +3,6 @@ __author__ = 'chi-liangkuo'
 import sys
 import os
 sys.path.insert(0, os.path.abspath('../'))
-# from pprint import pprint
-# pprint(sys.path)
 
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.cross_validation import cross_val_score
@@ -115,6 +113,11 @@ def knn_eval():
 
 if __name__ == "__main__":
 
+    #################################################################
+    ### KNN model hyper parameter tunning with 1 % percent of
+    ### training
+    ###
+    #################################################################
     start = timeit.default_timer()
     knn_eval()
     stop = timeit.default_timer()

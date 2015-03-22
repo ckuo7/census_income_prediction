@@ -6,11 +6,13 @@ from sklearn.preprocessing import StandardScaler
 
 def dataProcessOne(df):
 
-    # input is a pandas data frame
-    # standardize the continuous variable
-    # transform the categorical variable into labels
+    #######################################################################
+    ### input is a pandas data frame
+    ### standardize the continuous variable
+    ### transform the categorical variable into labels
+    ### initialize n by 1 matrix, n is number of row of data frame
+    #######################################################################
 
-    # initialize n by 1 matrix, n is number of row of data frame
     x_ = np.zeros(df.shape[0])[:, ]
 
     for i in df.columns:
