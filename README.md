@@ -54,7 +54,7 @@ With cleaned data, we are ready to fit and train our models. We ran five differe
 
 # Testing
 
-After tuning our hyperparameters to the F1 score, we chose, for each of our five models, the hyperparameters that would give us the highest cross-validation scores. Next, we fit these five algorithms on the training dataset. We did this in five separate files. It is important to note that, for computational purposes, we didn't always want to use the entire training dataset to fit our models. Additionally, we investigated how our models performed under various bootstrapped datasets where the ratio of positive (people who make more than $50,000 per year) to negative classes (people who make less) was unbalanced. This can be seen as follows: 
+After tuning our hyperparameters to optimize the F1 score, we chose, for each of our five models, the hyperparameters that would give us the highest cross-validation scores. Next, we fit these five algorithms on the training dataset. We did this in five separate files. It is important to note that, for computational purposes, we didn't always want to use the entire training dataset to fit our models. Additionally, we investigated how our models performed under various bootstrapped datasets where the ratio of positive (people who make more than $50,000 per year) to negative classes (people who make less) was unbalanced. This can be seen as follows: 
 
  1. cf_test.py is our chooseFeature algorithm using 93% of the training data and balanced classes.
  2. knn_test.py is our K-nearest neighbors algorithm using 5% of the training data with a ratio of 11:2 negative to positive classes.
