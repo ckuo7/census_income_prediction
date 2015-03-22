@@ -4,7 +4,7 @@ This data consists of a row per person. There are 40 features associated with ea
 
 # Loading the Data
 
-After unpacking the tar file, you should see three distinct files:
+After unpacking the **data.tar.gz** file, you should see three distinct files:
 
  1. census-income.data - this file contains the training data.
  
