@@ -42,15 +42,15 @@ In order to run some of sklearn's algorithms on our data, the user must transfor
 
 # Running the Models
 
-BLAH BLAH BLAH
+With cleaned data, we are ready to fit and train our models. We ran five different algorithms - chooseFeature (our own implementation of a decision stump), K-nearest neighbors, support vector classifiers, random forest, as well as logistic classification. Listed below are the four files used to help us determine which hyperparameters for each resulted in the highest F1 scores. These hyperparameters were tuned on our training data using cross validation.
 
- 1. chooseFeature.py
+ 1. chooseFeature.py has both the code used to create this implementation as well as a main function used to evaluated how well it performs.
  
- 2. knn.py
+ 2. knn.py looks at two different distance metrics as well as considers a range of neighbors on which to train our classifier.
  
- 3. svc.py
+ 3. svc.py considers two parameters: gamma and C values. A small gamma will give you low bias and high variance while a large gamma will give you higher bias and low variance. Small values of C will make the cost of misclassification low, while a large value of C will make the cost of misclassificdation high.
  
- 4. rf_logistic_hyperparameter.py
+ 4. rf_logistic_hyperparameter.py contains a script that iterates through various parameters for both random forest as well as logistic classification. For random forest, we iterated through the number of trees grown as well as the number of features to consider at each split. For logistic regression, we iterated through various values of C (again, a cost of misclassification value).
 
 # Testing
 
