@@ -54,13 +54,17 @@ With cleaned data, we are ready to fit and train our models. We ran five differe
 
 # Testing
 
-BLAH BLAH BLAH
+After tuning our hyperparameters to the F1 score, we chose, for each of our five models, the hyperparameters that would give us the highest cross-validation scores. Next, we fit these five algorithms on the training dataset. We did this in five separate files. It is important to note that, for computational purposes, we didn't always want to use the entire training dataset to fit our models. Additionally, we investigated how our models performed under various bootstrapped datasets where the ratio of positive (people who make more than $50,000 per year) to negative classes (people who make less) was unbalanced. This can be seen as follows: 
 
+ 1. cf_test.py is our chooseFeature algorithm using 93% of the training data and balanced classes.
+ 2. knn_test.py is our K-nearest neighbors algorithm using 5% of the training data with a ratio of 11:2 negative to positive classes.
+ 3. logistic_test.py is our logistic classifier algorithm using all the training data with a ratio of 7:1 negative to positive classes.
+ 4. rf_testing.py is our random forest classifier using 50% of the training data with a ratio of 7:1 negative to positive classes.
+ 5. svc_test2.py is our support vector classifier using 0.1% of the training data with balanced classes.
 
+The user should feel free to train using more of the training data if they feel they can get higher accuracy.
 
-
-
-
+final_testing_script.py runs all of these models in one fell swoop, printing out a final confusion matrix as well as F1 score for each.
 
 # Summary
 
