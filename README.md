@@ -14,7 +14,7 @@ After unpacking the tar file, you should see three distinct files:
 
 # Exploring the Data
 
-The first thing we did was investigate the general shape of our data. We plotted histograms as well as kept track of the number of distinct levels of each feature. Under the "eda" file, you will find the following three scripts we used to help us do so:
+The first thing we did was investigate the general shape of our data. We plotted histograms as well as kept track of the number of distinct levels of each feature. Under the "eda" folder, you will find the following three scripts we used to help us do so:
 
  1. brainstorm.py is a Python script that iterates through each column in our training, generating bar plots for the distinct values each feature takes. This is more informative for categorical as opposed to numerical (continuous) features.
 
@@ -24,7 +24,7 @@ The first thing we did was investigate the general shape of our data. We plotted
 
 # Data Munging
 
-Our data munging process is divided into two tasks. The first is balancing our dataset according to specified ratios. The second is transforming our data to more manageable levels. The first two files cover the first task, while the remainder cover the latter one.
+Our data munging process is divided into two tasks. The first is balancing our dataset according to specified ratios. The second is transforming our data to more manageable levels. The first two files cover the first task, while the remainder cover the latter one. These files can be found under the "munge" folder.
 
 Because the dataset is unbalanced (more people earn less than $50,000 per year than more), we wanted a way of bootstrapping our data. Specifically, we wanted to investigate two scenarios: the first was to bootstrap to have an even number of positive and negative classes and the second was when we had specified ratio of positive to negative classes.
 
@@ -42,7 +42,7 @@ In order to run some of sklearn's algorithms on our data, the user must transfor
 
 # Training the Models
 
-With cleaned data, we are ready to train our models. We ran five different algorithms - chooseFeature (our own implementation of a decision stump), K-nearest neighbors, support vector classifiers, random forest, as well as logistic classification. Listed below are the four files used to help us determine which hyperparameters for each resulted in the highest F1 scores. These hyperparameters were tuned on our training data using cross validation.
+With cleaned data, we are ready to train our models. We ran five different algorithms - chooseFeature (our own implementation of a decision stump), K-nearest neighbors, support vector classifiers, random forest, as well as logistic classification. Listed below are the four files used to help us determine which hyperparameters for each resulted in the highest F1 scores. These hyperparameters were tuned on our training data using cross validation. The following files can be found under the "model" folder.
 
  1. chooseFeature.py has both the code used to create this implementation as well as a main function used to evaluated how well it performs.
  
@@ -54,7 +54,7 @@ With cleaned data, we are ready to train our models. We ran five different algor
 
 # Testing the Models
 
-After tuning our hyperparameters to optimize the F1 score, we chose, for each of our five models, the hyperparameters that would give us the highest cross-validation scores. Next, we fit these five algorithms on the training dataset. We did this in five separate files. It is important to note that, for computational purposes, we didn't always want to use the entire training dataset to fit our models. Additionally, we investigated how our models performed under various bootstrapped datasets where the ratio of positive (people who make more than $50,000 per year) to negative classes (people who make less) was unbalanced. This can be seen in each of the following files: 
+After tuning our hyperparameters to optimize the F1 score, we chose, for each of our five models, the hyperparameters that would give us the highest cross-validation scores. Next, we fit these five algorithms on the training dataset. We did this in five separate files. It is important to note that, for computational purposes, we didn't always want to use the entire training dataset to fit our models. Additionally, we investigated how our models performed under various bootstrapped datasets where the ratio of positive (people who make more than $50,000 per year) to negative classes (people who make less) was unbalanced. This can be seen in each of the following files found under the "test" folder: 
 
  1. cf_test.py is our chooseFeature algorithm using 93% of the training data and balanced classes.
  2. knn_test.py is our K-nearest neighbors algorithm using 5% of the training data with a ratio of 11:2 negative to positive classes.
