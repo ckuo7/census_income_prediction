@@ -64,7 +64,7 @@ After tuning our hyperparameters to optimize the F1 score, we chose, for each of
 
 The user should feel free to train using more of the training data if they feel they can get higher accuracy.
 
-final_testing_script.py runs all of these models in one fell swoop, printing out a final confusion matrix as well as F1 score for each.
+*final_testing_script.py* runs all of these models in one fell swoop, printing out a final confusion matrix as well as F1 score for each.
 
 # Summary
 
