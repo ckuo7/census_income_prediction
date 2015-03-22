@@ -115,7 +115,7 @@ if __name__ == "__main__":
 
     #################################################################
     ### KNN model hyper parameter tunning with 1 % percent of
-    ### training
+    ### training set
     ###
     #################################################################
     start = timeit.default_timer()
