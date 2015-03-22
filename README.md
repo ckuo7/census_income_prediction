@@ -12,7 +12,7 @@ After unpacking the tar file, you should see three distinct files:
  
  3. target.txt - this text file contains information about the training data (how many distinct values there are for each feature, etc).
 
-# EDA
+# Exploring the Data
 
 The first thing we did was investigate the general shape of our data. We plotted histograms as well as kept track of the number of distinct levels of each feature. Under the "eda" file, you will find the following three scripts we used to help us do so:
 
@@ -26,15 +26,15 @@ The first thing we did was investigate the general shape of our data. We plotted
 
 Our data munging process is divided into two tasks. The first is balancing our dataset according to specified ratios. The second is transforming our data to more manageable levels. The first two files cover the first task, while the remainder cover the latter one.
 
-Because the dataset is unbalanced (more people earn less than $50,000 per year than more), we wanted a way of boostrapping our data. Specifically, we wanted to investigate two scenarios: the first was to bootstrap to have an even number of positive and negative classes and the second was when we had specified ratio of positive to negative classes.
+Because the dataset is unbalanced (more people earn less than $50,000 per year than more), we wanted a way of bootstrapping our data. Specifically, we wanted to investigate two scenarios: the first was to bootstrap to have an even number of positive and negative classes and the second was when we had specified ratio of positive to negative classes.
 
  1. dataBalance.py has two functions: dataBalance and dataUnbalance. The first is a way of achieving an evenly balanced dataset of both positive and negative classes, while the second is used to achieve an unbalance dataset in a specified ratio (say, 30% of the negative class and 70% of the positive). This particular file was used in the SVM, K-nn, as well as chooseFeature classifier.
  
  2. dataBalanceRatio.py has the same two functions as above. The only difference is that we used this particular file in the random forest as well as logistic classifiers.
 
-In order to run some of sklearn's algorithms on our data, the user must transform their categorical features into indicator variables. We used sklearn's OneHotEncoding method for this. Additionally, to increase performace time, we chose to normalize our numerical features. All three of the following files have functions to do this. The user passes their dataframe into one of these functions, and outputted will be a newly transformed dataframe. We employed different files for different algorithms listed below.
+In order to run some of sklearn's algorithms on our data, the user must transform their categorical features into indicator variables. We used sklearn's OneHotEncoding method for this. Additionally, to increase performance time, we chose to normalize our numerical features. All three of the following files have functions to do this. The user passes their dataframe into one of these functions, and outputted will be a newly transformed dataframe. We employed different files for different algorithms listed below.
 
- 1. dataProcess.py for the SVM, K-nn, and choosefeature classifiers.
+ 1. dataProcess.py for the SVM, K-nn, and chooseFeature classifiers.
  
  2. dataProcessLabel.py for the random forest classifier.
  
@@ -48,7 +48,7 @@ With cleaned data, we are ready to fit and train our models. We ran five differe
  
  2. knn.py looks at two different distance metrics as well as considers a range of neighbors on which to train our classifier.
  
- 3. svc.py considers two parameters: gamma and C values. A small gamma will give you low bias and high variance while a large gamma will give you higher bias and low variance. Small values of C will make the cost of misclassification low, while a large value of C will make the cost of misclassificdation high.
+ 3. svc.py considers two parameters: gamma and C values. A small gamma will give you low bias and high variance while a large gamma will give you higher bias and low variance. Small values of C will make the cost of misclassification low, while a large value of C will make the cost of misclassification high.
  
  4. rf_logistic_hyperparameter.py contains a script that iterates through various parameters for both random forest as well as logistic classification. For random forest, we iterated through the number of trees grown as well as the number of features to consider at each split. For logistic regression, we iterated through various values of C (again, a cost of misclassification value).
 
@@ -66,6 +66,6 @@ The user should feel free to train using more of the training data if they feel 
 
 **final_testing_script.py** runs all of these models in one fell swoop, printing out a final confusion matrix as well as F1 score for each.
 
-# Summary
+# Final Summary
 
-We applied a number of various machine learning algorithms to this problem. Along the way, we tuned the hyper-parameters of our algorithms. While investigating not only these algorithms and their associated hyper-parameters, we dealt with missing as well as unbalanced data. Using F1 scores as our metric for success, we ultimately achieved the highest F1 score of 0.5911 with an SVM classifier with an RBF kernel.
+We ultimately achieved the highest F1 score of 0.5911 with an SVM classifier with an RBF kernel. We would love to hear back from anyone who found any other interesting results. Thank for you for your time and consideration.
