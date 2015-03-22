@@ -40,7 +40,7 @@ In order to run some of sklearn's algorithms on our data, the user must transfor
  
  3. dataProcessOne.py for the logistic classifier.
 
-# Running the Models
+# Training the Models
 
 With cleaned data, we are ready to fit and train our models. We ran five different algorithms - chooseFeature (our own implementation of a decision stump), K-nearest neighbors, support vector classifiers, random forest, as well as logistic classification. Listed below are the four files used to help us determine which hyperparameters for each resulted in the highest F1 scores. These hyperparameters were tuned on our training data using cross validation.
 
@@ -52,7 +52,7 @@ With cleaned data, we are ready to fit and train our models. We ran five differe
  
  4. rf_logistic_hyperparameter.py contains a script that iterates through various parameters for both random forest as well as logistic classification. For random forest, we iterated through the number of trees grown as well as the number of features to consider at each split. For logistic regression, we iterated through various values of C (again, a cost of misclassification value).
 
-# Testing
+# Testing the Models
 
 After tuning our hyperparameters to optimize the F1 score, we chose, for each of our five models, the hyperparameters that would give us the highest cross-validation scores. Next, we fit these five algorithms on the training dataset. We did this in five separate files. It is important to note that, for computational purposes, we didn't always want to use the entire training dataset to fit our models. Additionally, we investigated how our models performed under various bootstrapped datasets where the ratio of positive (people who make more than $50,000 per year) to negative classes (people who make less) was unbalanced. This can be seen as follows: 
 
