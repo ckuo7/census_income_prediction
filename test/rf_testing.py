@@ -19,7 +19,7 @@ def rf_testing():
 
     np.random.seed(10)
 
-    data = pd.read_csv('census-income.data', header=None)
+    data = pd.read_csv('../data/census-income.data', header=None)
     data.columns = ['AAGE', 'ACLSWKR', 'ADTIND', 'ADTOCC', 'AHGA', 'AHRSPAY',
                     'AHSCOL', 'AMARITL', 'AMJIND', 'AMJOCC', 'ARACE', 'AREORGN',
                     'ASEX', 'AUNMEM', 'AUNTYPE', 'AWKSTAT', 'CAPGAIN', 'CAPLOSS',
@@ -29,7 +29,7 @@ def rf_testing():
                     'SEOTR', 'VETQVA', 'VETYN', 'WKSWORK', 'YEAR', 'TARGET']
 
 
-    test_data = pd.read_csv('census-income.test', header=None)
+    test_data = pd.read_csv('../data/census-income.test', header=None)
     test_data.columns = ['AAGE', 'ACLSWKR', 'ADTIND', 'ADTOCC', 'AHGA', 'AHRSPAY',
                     'AHSCOL', 'AMARITL', 'AMJIND', 'AMJOCC', 'ARACE', 'AREORGN',
                     'ASEX', 'AUNMEM', 'AUNTYPE', 'AWKSTAT', 'CAPGAIN', 'CAPLOSS',
