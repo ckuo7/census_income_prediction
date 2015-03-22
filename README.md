@@ -50,7 +50,7 @@ BLAH BLAH BLAH
  
  3. svc.py
  
- 4. rf_logistic_hyperparameters.py
+ 4. rf_logistic_hyperparameter.py
 
 # Testing
 
