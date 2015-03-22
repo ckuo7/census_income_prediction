@@ -42,7 +42,7 @@ In order to run some of sklearn's algorithms on our data, the user must transfor
 
 # Training the Models
 
-With cleaned data, we are ready to fit and train our models. We ran five different algorithms - chooseFeature (our own implementation of a decision stump), K-nearest neighbors, support vector classifiers, random forest, as well as logistic classification. Listed below are the four files used to help us determine which hyperparameters for each resulted in the highest F1 scores. These hyperparameters were tuned on our training data using cross validation.
+With cleaned data, we are ready to train our models. We ran five different algorithms - chooseFeature (our own implementation of a decision stump), K-nearest neighbors, support vector classifiers, random forest, as well as logistic classification. Listed below are the four files used to help us determine which hyperparameters for each resulted in the highest F1 scores. These hyperparameters were tuned on our training data using cross validation.
 
  1. chooseFeature.py has both the code used to create this implementation as well as a main function used to evaluated how well it performs.
  
@@ -54,7 +54,7 @@ With cleaned data, we are ready to fit and train our models. We ran five differe
 
 # Testing the Models
 
-After tuning our hyperparameters to optimize the F1 score, we chose, for each of our five models, the hyperparameters that would give us the highest cross-validation scores. Next, we fit these five algorithms on the training dataset. We did this in five separate files. It is important to note that, for computational purposes, we didn't always want to use the entire training dataset to fit our models. Additionally, we investigated how our models performed under various bootstrapped datasets where the ratio of positive (people who make more than $50,000 per year) to negative classes (people who make less) was unbalanced. This can be seen as follows: 
+After tuning our hyperparameters to optimize the F1 score, we chose, for each of our five models, the hyperparameters that would give us the highest cross-validation scores. Next, we fit these five algorithms on the training dataset. We did this in five separate files. It is important to note that, for computational purposes, we didn't always want to use the entire training dataset to fit our models. Additionally, we investigated how our models performed under various bootstrapped datasets where the ratio of positive (people who make more than $50,000 per year) to negative classes (people who make less) was unbalanced. This can be seen in each of the following files: 
 
  1. cf_test.py is our chooseFeature algorithm using 93% of the training data and balanced classes.
  2. knn_test.py is our K-nearest neighbors algorithm using 5% of the training data with a ratio of 11:2 negative to positive classes.
@@ -62,10 +62,10 @@ After tuning our hyperparameters to optimize the F1 score, we chose, for each of
  4. rf_testing.py is our random forest classifier using 50% of the training data with a ratio of 7:1 negative to positive classes.
  5. svc_test2.py is our support vector classifier using 0.1% of the training data with balanced classes.
 
-The user should feel free to train using more of the training data if they feel they can get higher accuracy.
+The user should feel free to train using more of the training data if they feel they can get a higher F1 score.
 
 **final_testing_script.py** runs all of these models in one fell swoop, printing out a final confusion matrix as well as F1 score for each.
 
 # Final Summary
 
-We ultimately achieved the highest F1 score of 0.5911 with an SVM classifier with an RBF kernel. We would love to hear back from anyone who found any other interesting results. Thank for you for your time and consideration.
+We ultimately achieved the highest F1 score of 0.5911 with an SVM classifier with an RBF kernel. We would love to hear back from people with feedback or interesting results of their own. Thank for you for your time and consideration.
